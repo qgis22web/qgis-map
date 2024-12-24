@@ -26,6 +26,7 @@
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
         <script src="js/L.Control.Layers.Tree.min.js"></script>
+        <script src="js/multi-style-layer.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
         <script src="js/leaflet.pattern.js"></script>
         <script src="js/leaflet-hash.js"></script>
@@ -47,10 +48,11 @@
         <script src="data/00627_12.js"></script>
         <script src="data/amt_13.js"></script>
         <script src="data/amt_vill_14.js"></script>
+        <script src="data/2024_15.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[22.620618930296533,120.12663176906518],[22.958514236213844,120.58559208978505]]);
+        }).fitBounds([[22.554049098729777,120.29593700436615],[22.60240683494103,120.36399663093897]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -6292,28 +6294,22 @@
         function pop_amt_13(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">TOWNNAME</th>\
-                        <td class="visible-with-data" id="TOWNNAME">' + (feature.properties['TOWNNAME'] !== null ? autolinker.link(feature.properties['TOWNNAME'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['TOWNNAME'] !== null ? autolinker.link(feature.properties['TOWNNAME'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">suit</th>\
-                        <td class="visible-with-data" id="suit">' + (feature.properties['suit'] !== null ? autolinker.link(feature.properties['suit'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['suit'] !== null ? autolinker.link(feature.properties['suit'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">ws</th>\
-                        <td class="visible-with-data" id="ws">' + (feature.properties['ws'] !== null ? autolinker.link(feature.properties['ws'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['ws'] !== null ? autolinker.link(feature.properties['ws'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">house</th>\
-                        <td class="visible-with-data" id="house">' + (feature.properties['house'] !== null ? autolinker.link(feature.properties['house'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['house'] !== null ? autolinker.link(feature.properties['house'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">general</th>\
-                        <td class="visible-with-data" id="general">' + (feature.properties['general'] !== null ? autolinker.link(feature.properties['general'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['general'] !== null ? autolinker.link(feature.properties['general'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">luxury</th>\
-                        <td class="visible-with-data" id="luxury">' + (feature.properties['luxury'] !== null ? autolinker.link(feature.properties['luxury'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['luxury'] !== null ? autolinker.link(feature.properties['luxury'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -6327,11 +6323,11 @@
             return {
                 pane: 'pane_amt_13',
                 opacity: 1,
-                color: 'rgba(0,29,52,1.0)',
+                color: 'rgba(50,51,52,1.0)',
                 dashArray: '',
                 lineCap: 'square',
                 lineJoin: 'bevel',
-                weight: 2.0,
+                weight: 4.0,
                 fillOpacity: 0,
                 interactive: true,
             }
@@ -6353,8 +6349,7 @@
         function pop_amt_vill_14(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">TOWNNAME</th>\
-                        <td class="visible-with-data" id="TOWNNAME">' + (feature.properties['TOWNNAME'] !== null ? autolinker.link(feature.properties['TOWNNAME'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>TOWNNAME</strong><br />' + (feature.properties['TOWNNAME'] !== null ? autolinker.link(feature.properties['TOWNNAME'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">VILLNAME</th>\
@@ -6392,11 +6387,11 @@
             return {
                 pane: 'pane_amt_vill_14',
                 opacity: 1,
-                color: 'rgba(51,51,51,1.0)',
+                color: 'rgba(141,141,141,1.0)',
                 dashArray: '',
                 lineCap: 'square',
                 lineJoin: 'bevel',
-                weight: 2.0,
+                weight: 1.0,
                 fillOpacity: 0,
                 interactive: true,
             }
@@ -6415,7 +6410,87 @@
         });
         bounds_group.addLayer(layer_amt_vill_14);
         map.addLayer(layer_amt_vill_14);
+        function pop_2024_15(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['縣市代碼'] !== null ? autolinker.link(feature.properties['縣市代碼'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['名稱'] !== null ? autolinker.link(feature.properties['名稱'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['面積'] !== null ? autolinker.link(feature.properties['面積'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['管理單位'] !== null ? autolinker.link(feature.properties['管理單位'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['開發依據'] !== null ? autolinker.link(feature.properties['開發依據'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['開發情形'] !== null ? autolinker.link(feature.properties['開發情形'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['服務中心'] !== null ? autolinker.link(feature.properties['服務中心'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['分類'] !== null ? autolinker.link(feature.properties['分類'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        var pattern_2024_15_0 = new L.StripePattern({
+            weight: 0.3,
+            spaceWeight: 2.0,
+            color: '#e41a1c',
+            opacity: 1.0,
+            spaceOpacity: 0,
+            angle: 225
+        });
+        pattern_2024_15_0.addTo(map);
+        function style_2024_15_0() {
+            return {
+                pane: 'pane_2024_15',
+                stroke: false,
+                fillOpacity: 1,
+                fillPattern: pattern_2024_15_0,
+                interactive: true,
+            }
+        }
+        function style_2024_15_1() {
+            return {
+                pane: 'pane_2024_15',
+                opacity: 1,
+                color: 'rgba(228,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_2024_15');
+        map.getPane('pane_2024_15').style.zIndex = 415;
+        map.getPane('pane_2024_15').style['mix-blend-mode'] = 'normal';
+        var layer_2024_15 = new L.geoJson.multiStyle(json_2024_15, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_2024_15',
+            layerName: 'layer_2024_15',
+            pane: 'pane_2024_15',
+            onEachFeature: pop_2024_15,
+            styles: [style_2024_15_0,style_2024_15_1,]
+        });
+        bounds_group.addLayer(layer_2024_15);
+        map.addLayer(layer_2024_15);
         var overlaysTree = [
+            {label: '<img src="legend/2024_15.png" /> 2024產業管理局', layer: layer_2024_15},
             {label: '<img src="legend/amt_vill_14.png" /> amt_vill', layer: layer_amt_vill_14},
             {label: '<img src="legend/amt_13.png" /> amt', layer: layer_amt_13},
             {label: '<img src="legend/00627_12.png" /> <-0.0627', layer: layer_00627_12},
@@ -6511,22 +6586,35 @@
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['TOWNNAME'] !== null?String('<div style="color: #323232; font-size: 15pt; font-weight: bold; font-family: \'UD Digi Kyokasho NP-B\', sans-serif;">' + layer.feature.properties['TOWNNAME']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_amt_13'});
+            layer.bindTooltip((layer.feature.properties['TOWNNAME'] !== null?String('<div style="color: #323232; font-size: 10pt; font-weight: bold; font-family: \'UD Digi Kyokasho NP-B\', sans-serif;">' + layer.feature.properties['TOWNNAME']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_amt_13'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
               addLabel(layer, i);
               i++;
         });
-        resetLabels([layer_VILLAGE_NLSC_121_1130419_1,layer_amt_13]);
+        var i = 0;
+        layer_2024_15.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['名稱'] !== null?String('<div style="color: #500000; font-size: 8pt; font-weight: bold; font-family: \'UD Digi Kyokasho NK-B\', sans-serif;">' + layer.feature.properties['名稱']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_2024_15'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_VILLAGE_NLSC_121_1130419_1,layer_amt_13,layer_2024_15]);
         map.on("zoomend", function(){
-            resetLabels([layer_VILLAGE_NLSC_121_1130419_1,layer_amt_13]);
+            resetLabels([layer_VILLAGE_NLSC_121_1130419_1,layer_amt_13,layer_2024_15]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_VILLAGE_NLSC_121_1130419_1,layer_amt_13]);
+            resetLabels([layer_VILLAGE_NLSC_121_1130419_1,layer_amt_13,layer_2024_15]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_VILLAGE_NLSC_121_1130419_1,layer_amt_13]);
+            resetLabels([layer_VILLAGE_NLSC_121_1130419_1,layer_amt_13,layer_2024_15]);
         });
         </script>
     </body>
